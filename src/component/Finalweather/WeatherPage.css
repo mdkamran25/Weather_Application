@@ -7,14 +7,14 @@ body {
   margin: 0;
 }
 .container {
-  height: 100vh;
+  height: 100vh !important;
 }
 .first-div{
     overflow: hidden;
 }
 .image {
   /* background-image: url(../../image/city.jpg); */
-  height: 570px !important;
+
   overflow: hidden;
 }
 .weatherCondition {
@@ -33,24 +33,12 @@ hr {
   width: 90%;
   align-self: center;
 }
-.searchIcon,
-input {
-  background: transparent !important;
-  border: none !important;
-  color: white !important;
-  opacity: 1 !important;
-}
 .input-group {
   border-bottom: 1px solid white;
   background: transparent !important;
   width: 80% !important;
   align-self: center;
 }
-input:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
 .weatherDetailSeparation{
   border-top: 3.5px solid !important;
   color: white !important;
@@ -65,4 +53,16 @@ input:focus {
 .float-right{
     float: right;
 }
-  
+.Place1{
+  right: 0px !important;
+}
+.bottom{
+  bottom: 9px !important;
+}
+.bottomT{
+  bottom: 15px !important;
+  font-family: Display Sans, Sans Serif, Dingbat;
+}
+.time{
+  font-family: Display Sans, Sans Serif, Dingbat !important;
+}

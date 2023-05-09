@@ -1,0 +1,8 @@
+.date{
+    font-size: 1.8rem;
+    color: rgb(196, 196, 196);
+    font-family: Display Sans, Sans Serif, Dingbat;
+}
+.time{
+    font-family: Display Sans, Sans Serif, Dingbat !important;
+}

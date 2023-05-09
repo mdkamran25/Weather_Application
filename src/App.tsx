@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {Suspense, lazy} from 'react';
 import './App.css';
 import GeoLocation from './component/FrontPage/geoLocation';
-import WeatherPage from './component/Finalweather/WeatherPage';
-
+const WeatherPage = lazy(()=>import('./component/Finalweather/WeatherPage'))
 function App() {
+    
   return (
     <>
       {/* <GeoLocation /> */}
-      <WeatherPage />
+      <Suspense fallback={<div>Please wait while Loading</div>}>
+        <WeatherPage />
+      </Suspense>
+     
     </>
   );
 }
