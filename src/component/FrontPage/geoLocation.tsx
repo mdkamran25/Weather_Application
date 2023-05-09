@@ -5,10 +5,19 @@ import cloud from "../../image/WeatherIcons.gif"
 function GeoLocation() {
 
     useEffect(()=>{
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
+        // navigator.geolocation.getCurrentPosition(function(position) {
+        //     console.log("Latitude is :", position.coords.latitude);
+        //     console.log("Longitude is :", position.coords.longitude);
+        //   });
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude: " + position.coords.latitude +
+            "Longitude: " + position.coords.longitude);
           });
+        } else {
+          console.log("Geolocation is not supported by this browser.");
+        }
+        
     }, [])
 
   return (

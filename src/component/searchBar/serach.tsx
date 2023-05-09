@@ -10,9 +10,10 @@ function SearchBar(props: SearchBarProps) {
 
   const [city, setCity] = React.useState<string | null>(null);
   const handleChange: any = (e: any) => {
-    const value = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
-  setCity(value);
-  setUpdateLocation(value);
+    const value =
+      e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+    setCity(value);
+    setUpdateLocation(value);
   };
 
   const debouncedResults = React.useMemo(() => {
@@ -32,7 +33,7 @@ function SearchBar(props: SearchBarProps) {
         placeholder="Search City"
         onChange={debouncedResults}
       />
-      
+
       <div className="input-group-append">
         <button className="btn btn-secondary searchIcon border-0" type="button">
           <i className="fa fa-search"></i>
@@ -43,4 +44,3 @@ function SearchBar(props: SearchBarProps) {
 }
 
 export default SearchBar;
-
