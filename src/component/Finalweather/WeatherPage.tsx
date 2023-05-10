@@ -78,7 +78,7 @@ function WeatherPage() {
   }, [error, data]);
 
 useEffect(()=>{
-  fetch(`https://source.unsplash.com/800x900/?,nature,${data?.weather[0].main}`).then(
+  fetch(`https://source.unsplash.com/800x900/?,weather,${data?.weather[0].main}`).then(
     (res)=>{
       setWeatherImage(res?.url)
     }

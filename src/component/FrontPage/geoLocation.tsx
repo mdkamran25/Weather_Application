@@ -70,7 +70,7 @@ function GeoLocation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/weather", { state: {cityName: data?.name, error:error}});
-    }, 2000);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
