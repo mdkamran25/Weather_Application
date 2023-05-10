@@ -14,6 +14,7 @@ function SearchBar(props: SearchBarProps) {
       e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
     setCity(value);
     setUpdateLocation(value);
+    console.log(city, "city");
   };
 
   const debouncedResults = React.useMemo(() => {

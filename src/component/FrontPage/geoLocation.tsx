@@ -1,25 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./geoLocation.css";
 import cloud from "../../image/WeatherIcons.gif"
 
 function GeoLocation() {
+
+    const [lat, setLat] = useState<number>();
+    const [lon, setLon] = useState<number>();
 
     useEffect(()=>{
         // navigator.geolocation.getCurrentPosition(function(position) {
         //     console.log("Latitude is :", position.coords.latitude);
         //     console.log("Longitude is :", position.coords.longitude);
         //   });
+        
         if ("geolocation" in navigator) {
           navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude: " + position.coords.latitude +
-            "Longitude: " + position.coords.longitude);
+            setLat(position.coords.latitude);
+            setLon(position.coords.longitude)
           });
         } else {
           console.log("Geolocation is not supported by this browser.");
         }
         
     }, [])
-
   return (
     <>
       <div className="container d-flex align-items-center justify-content-center">

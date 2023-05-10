@@ -3,7 +3,7 @@ import "./WeatherPage.css";
 import SearchBar from "../searchBar/serach";
 import useFetch from "../../hooks/apicall";
 import Dates from "../date/date";
-import cloud from "../../image/WeatherIcons.gif"
+import loading from "../../image/loading-fast.gif"
  
 
 interface DataObj {
@@ -51,7 +51,7 @@ interface DataObj {
 
 function WeatherPage() {
   const [updateLocation, setUpdateLocation] = useState<string | null>("Mumbai");
-  const [weatherImage,setWeatherImage]=useState(cloud)
+  const [weatherImage,setWeatherImage]=useState(loading)
   const { data, error } = useFetch<DataObj>(
     `https://api.openweathermap.org/data/2.5/weather?q=${
       updateLocation ? updateLocation : "Mumbai"
@@ -111,7 +111,6 @@ useEffect(()=>{
           <div className="col-sm-6 position-relative col-lg-5 p-0 d-none d-sm-block first-div">
             <img
               className="image h-100 w-100"
-              // src={`https://source.unsplash.com/800x900/?weather,${data?.weather[0].main}`}
               src={weatherImage}
               loading="lazy"
             />
