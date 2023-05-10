@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect } from "react";
 import "./WeatherPage.css";
 import SearchBar from "../searchBar/serach";
 import useFetch from "../../hooks/apicall";
 import Dates from "../date/date";
-import loading from "../../image/loading-fast.gif"
+// import loading from "../../../public/loading-fast.gif"
 import { useLocation } from "react-router-dom";
 
 interface DataObj {
@@ -58,7 +58,7 @@ function WeatherPage() {
       setUpdateLocation(location.state.cityName);
     } 
   }
-  const [weatherImage, setWeatherImage]=useState(loading)
+  const [weatherImage, setWeatherImage]=useState("loading-fast.gif")
 
   const { data, error } = useFetch<DataObj>(
     `https://api.openweathermap.org/data/2.5/weather?q=${
@@ -78,7 +78,7 @@ function WeatherPage() {
   }, [error, data]);
 
 useEffect(()=>{
-  fetch(`https://source.unsplash.com/800x900/?,weather,${data?.weather[0].main}`).then(
+  fetch(`https://source.unsplash.com/800x900/?nature,${data?.weather[0].main}`).then(
     (res)=>{
       setWeatherImage(res?.url)
     }

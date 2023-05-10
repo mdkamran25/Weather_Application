@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./geoLocation.css";
-import cloud from "../../image/WeatherIcons.gif";
+// import cloud from "WeatherIcons.gif";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/apicall";
 import axios from "axios";
@@ -70,7 +70,7 @@ function GeoLocation() {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/weather", { state: {cityName: data?.name, error:error}});
-    }, 5000);
+    }, 4000);
 
     return () => {
       clearTimeout(timer);
@@ -83,7 +83,7 @@ function GeoLocation() {
         <div className="row w-100">
           <div className="col pb-5 bg-dark text-light opacity-75 d-flex flex-column justify-content-center align-items-center text-center">
             <div className="col-12 col-sm-10 col-lg-6 ">
-              <img src={cloud} className="w-50" />
+              <img src="WeatherIcons.gif" className="w-50" />
             </div>
             <div className="col-12 col-sm-10 col-lg-6">
               <span className="h4">Detecting Your Location</span>
