@@ -4,7 +4,7 @@ import SearchBar from "../searchBar/serach";
 import useFetch from "../../hooks/apicall";
 import Dates from "../date/date";
 import loading from "../../image/loading-fast.gif"
- 
+import { useLocation } from "react-router-dom";
 
 interface DataObj {
   base: string;
@@ -50,8 +50,16 @@ interface DataObj {
 }
 
 function WeatherPage() {
-  const [updateLocation, setUpdateLocation] = useState<string | null>("Mumbai");
-  const [weatherImage,setWeatherImage]=useState(loading)
+  const [updateLocation, setUpdateLocation] = useState<string | null>();
+  const location = useLocation();
+
+  if(location.state.cityName){
+    if(!updateLocation){
+      setUpdateLocation(location.state.cityName);
+    } 
+  }
+  const [weatherImage, setWeatherImage]=useState(loading)
+
   const { data, error } = useFetch<DataObj>(
     `https://api.openweathermap.org/data/2.5/weather?q=${
       updateLocation ? updateLocation : "Mumbai"
@@ -59,11 +67,8 @@ function WeatherPage() {
   );
   const [correctLocation, setCorrectLocation] = useState<boolean>(true);
 
-  // console.log(data, "data");
 
   useEffect(() => {
-    // console.log(data?.name, "data,", updateLocation, "before");
-    // if (data && data.name !== updateLocation) {
     if (error) {
       setCorrectLocation(false);
     } else {
@@ -71,14 +76,17 @@ function WeatherPage() {
     }
     
   }, [error, data]);
+
 useEffect(()=>{
-  console.log("fetchinfg")
-  fetch(`https://source.unsplash.com/800x900/?weather,${data?.weather[0].main}`).then(
+  fetch(`https://source.unsplash.com/800x900/?,nature,${data?.weather[0].main}`).then(
     (res)=>{
       setWeatherImage(res?.url)
     }
-  )
+  ).catch((err) => {
+    console.log(err)
+  })
 },[updateLocation])
+
   let emoji = null;
   if (data) {
     if (data.weather[0].main === "Clouds") {
